@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Pressable, Text, Image } from 'react-native';
+import { StyleSheet, Pressable, Text, Image, View } from 'react-native';
 
 interface StyleTemplateSquareProps {
     imageUri?: number;
@@ -10,13 +10,20 @@ interface StyleTemplateSquareProps {
 }
 
 export const StyleTemplateSquare = ({ icon, label, imageUri, selected, onPress }: StyleTemplateSquareProps) => (
-    <Pressable onPress={onPress} style={[styles.styleOption, selected && styles.selectedStyle]}>
-        {icon ? icon : <Image source={imageUri} resizeMode="cover" style={styles.styleImage} />}
+    <Pressable onPress={onPress} style={styles.wrapper}>
+        <View style={[styles.styleOption, selected && styles.selectedStyle]}>
+            {icon ? icon : <Image source={imageUri} resizeMode="cover" style={styles.styleImage} />}
+        </View>
         <Text style={styles.styleLabel}>{label}</Text>
     </Pressable>
 );
 
 const styles = StyleSheet.create({
+    wrapper: {
+        alignItems: 'center',
+        marginRight: 12,
+        width: 90,
+    },
     styleOption: {
         width: 90,
         height: 90,
@@ -25,7 +32,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
-        marginRight: 12,
     },
     selectedStyle: {
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -37,8 +43,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     styleLabel: {
-        position: 'absolute',
-        bottom: 8,
+        marginTop: 8,
         color: 'white',
         fontSize: 12,
         textAlign: 'center',
