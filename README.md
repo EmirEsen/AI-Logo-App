@@ -61,7 +61,7 @@ Generated images are saved in Firestore under the `images` collection with the f
 
 ### Extending the App
 
-New AI features (e.g., different AI models or advanced logo customization) can be added under the `/features` folder. This allows for easy extension of the app's capabilities. Each new feature can be separated into its own module for clarity.
+New AI features (e.g., different AI models or advanced logo customization) can be added under the `/(features)` folder. This allows for easy extension of the app's capabilities. Each new feature can be separated into its own module for clarity.
 
 ## User Authentication
 
