@@ -2,11 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text, ActivityIndicator, Image, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 
-import { app } from '../../lib/firebaseConfig';
-import { collection, addDoc, getDocs, getFirestore } from 'firebase/firestore';
+import { db } from '../../lib/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
 import { IImageDoc } from '../../models/IImageDoc';
 
-const db = getFirestore(app);
 
 export type ProgressState = 'pending' | 'success' | 'error';
 
@@ -36,13 +35,12 @@ export const StatusIndicatorChip = ({ state, onRetry, imageUrl, prompt }: Status
             addData({
                 image_url: imageUrl,
                 prompt: prompt,
-                user_id: '12345'
+                user_id: '12345' //user ID Can be taken from apple id or some other unique id later.
             });
 
             router.push({
                 pathname: '/(features)/ai-logo/success',
                 params: {
-                    imageUrl,
                     prompt
                 }
             });
