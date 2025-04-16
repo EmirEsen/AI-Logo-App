@@ -29,11 +29,9 @@ The app integrates with Firebase Functions to interact with a Node.js API hosted
      ```
    - Response:
      ```json
-     {
-         "image_url": "https://your-image-url.com",
-         "prompt": "A futuristic logo for a tech startup",
-         "user_id": "12345"
-     }
+    {
+        "image_url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-OvxQSev59mqO........"
+    }
      ```
 
 2. **Health Check**
