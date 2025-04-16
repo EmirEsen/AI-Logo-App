@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable, FlatList, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -7,6 +7,7 @@ import { Keyboard } from 'react-native';
 import { StatusIndicatorChip, ProgressState } from '@/components/ui/StatusIndicatorChip';
 import { StyleTemplateSquare } from '@/components/ui/StyleTemplateSquare';
 import { generateLogo } from '../../../lib/api';
+import { useLogo } from '@/components/context/LogoContext';
 
 interface StyleOption {
     id: string;
@@ -60,6 +61,8 @@ export default function FromScratchScreen() {
     const [progressState, setProgressState] = useState<ProgressState | null>(null);
     const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
 
+    const { setLogoUrl } = useLogo();
+
     const handleCreate = async () => {
         if (!prompt) return;
 
@@ -68,7 +71,8 @@ export default function FromScratchScreen() {
 
         try {
             const imageUrl = await generateLogo(prompt);
-            setGeneratedImageUrl(imageUrl);
+            setLogoUrl(imageUrl);
+            setGeneratedImageUrl(imageUrl)
             setProgressState('success');
         } catch (error) {
             console.error('Error:', error);

@@ -1,8 +1,9 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, Dimensions, ActivityIndicator } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useLogo } from '@/components/context/LogoContext';
 
 const { height: screenHeight } = Dimensions.get('window');
 const imageContainerHeight = screenHeight * 0.4;
@@ -11,7 +12,7 @@ export default function SuccessScreen() {
     const params = useLocalSearchParams();
     const router = useRouter();
 
-    const imageUrl = params.imageUrl as string;
+    const imageUrl = useLogo().logoUrl;
     const prompt = params.prompt as string;
 
     return (
@@ -29,11 +30,11 @@ export default function SuccessScreen() {
                 </View>
 
                 <View style={styles.imageContainer}>
-                    <Image
-                        source={{ uri: imageUrl as string }}
+                    {imageUrl ? <Image
+                        source={{ uri: imageUrl }}
                         style={styles.image}
-                        resizeMode="contain"
-                    />
+                        resizeMode="cover"
+                    /> : <></>}
                 </View>
 
                 <View style={styles.promptContainer}>
@@ -45,7 +46,7 @@ export default function SuccessScreen() {
                                 <Text style={styles.tagText}>Monogram</Text>
                             </View>
                         </View>
-                        <Pressable style={styles.copyButton}>
+                        <Pressable style={styles.copyButton} onPress={() => { }}>
                             <Ionicons name="copy-outline" size={20} color="white" />
                             <Text style={styles.copyText}>Copy</Text>
                         </Pressable>
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     imageContainer: {
         height: imageContainerHeight,
         margin: 20,
-        backgroundColor: 'white',
         borderRadius: 16,
         overflow: 'hidden',
         justifyContent: 'center',
@@ -144,5 +144,10 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 14,
         opacity: 0.7,
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 16,
+        textAlign: 'center',
     },
 }); 
