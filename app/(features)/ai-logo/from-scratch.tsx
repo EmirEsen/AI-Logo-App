@@ -81,7 +81,7 @@ export default function FromScratchScreen() {
     };
 
     const handleSurpriseMe = () => {
-        setPrompt('A random prompt');
+        setPrompt('Minimalistic logo for a boutique hotel named Cosmos on the Aegean coast of Turkey, featuring ocean waves and terracotta accents.');
     };
 
     const renderStyleOption = ({ item }: { item: StyleOption }) => (
