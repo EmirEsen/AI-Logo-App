@@ -8,6 +8,7 @@ import { StatusIndicatorChip, ProgressState } from '@/components/ui/StatusIndica
 import { StyleTemplateSquare } from '@/components/ui/StyleTemplateSquare';
 import { generateLogo } from '../../../lib/api';
 import { useLogo } from '@/components/context/LogoContext';
+import SvgSlashIcon from '@/components/ui/svgs/SlashIcon';
 
 interface StyleOption {
     id: string;
@@ -20,7 +21,7 @@ const DUMMY_STYLE_OPTIONS: StyleOption[] = [
     {
         id: 'no-style',
         label: 'No Style',
-        icon: <Ionicons name="close-circle-outline" size={28} color="white" />,
+        icon: <SvgSlashIcon />,
     },
     {
         id: 'monogram',
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: '800',
         color: 'white',
         marginBottom: 16,
         paddingHorizontal: 20
