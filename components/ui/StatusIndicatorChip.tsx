@@ -108,7 +108,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 20,
         borderRadius: 16,
-        height: 72,
+        height: 70,
+        marginTop: 20,
+        marginBottom: 10
     },
     pendingContainer: {
         backgroundColor: '#27272A',
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     spinnerContainer: {
         width: 72,
         height: 72,
-        backgroundColor: 'black',
+        backgroundColor: '#18181B',
         justifyContent: 'center',
         alignItems: 'center',
         borderTopLeftRadius: 16,

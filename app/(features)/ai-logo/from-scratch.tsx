@@ -8,7 +8,8 @@ import { StatusIndicatorChip, ProgressState } from '@/components/ui/StatusIndica
 import { StyleTemplateSquare } from '@/components/ui/StyleTemplateSquare';
 import { generateLogo } from '../../../lib/api';
 import { useLogo } from '@/components/context/LogoContext';
-import SvgSlashIcon from '@/components/ui/svgs/SlashIcon';
+import SvgSlashIcon from '@/components/ui/svgs/SvgSlashIcon';
+import SvgCreateSparkles from '@/components/ui/svgs/SvgCreateSparkles';
 
 interface StyleOption {
     id: string;
@@ -178,7 +179,7 @@ export default function FromScratchScreen() {
                         style={styles.createGradient}
                     >
                         <Text style={styles.createText}>Create</Text>
-                        <Ionicons name="sparkles" size={20} color="white" style={styles.sparkle} />
+                        <SvgCreateSparkles />
                     </LinearGradient>
                 </Pressable>
 
