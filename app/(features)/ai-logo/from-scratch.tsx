@@ -105,7 +105,9 @@ export default function FromScratchScreen() {
             style={styles.gradientBackground}
         >
             <SafeAreaView style={styles.safeArea}>
-                <Text style={styles.title}>AI Logo</Text>
+                <View style={styles.headerTitle}>
+                    <Text style={styles.title}>AI Logo</Text>
+                </View>
                 {progressState ? (
                     <StatusIndicatorChip
                         state={progressState}
@@ -118,35 +120,42 @@ export default function FromScratchScreen() {
                     <View style={styles.promptHeader}>
                         <Text style={styles.promptTitle}>Enter Your Prompt</Text>
                         <Pressable onPress={handleSurpriseMe} style={styles.surpriseButton}>
-                            <Text style={{ fontSize: 12 }}>🎲</Text>
+                            <Text style={{ fontSize: 13 }}>🎲</Text>
                             <Text style={styles.surpriseText}>Surprise me</Text>
                         </Pressable>
                     </View>
 
-                    <BlurView intensity={90} tint="dark" style={[styles.inputWrapper, isInputFocused && styles.inputWrapperFocused]}>
-                        <TextInput
-                            style={styles.input}
-                            placeholder={isInputFocused ? "" : "A blue lion logo reading 'HEXA' in bold letters"}
-                            placeholderTextColor="#71717A"
-                            value={prompt}
-                            onChangeText={setPrompt}
-                            multiline
-                            maxLength={500}
-                            onFocus={() => setIsInputFocused(true)}
-                            onBlur={() => setIsInputFocused(false)}
-                            returnKeyType="done"
-                            enablesReturnKeyAutomatically={true}
-                            onKeyPress={({ nativeEvent }) => {
-                                if (nativeEvent.key === 'Enter') {
+                    <BlurView intensity={15} tint="dark" style={[styles.inputWrapper, isInputFocused && styles.inputWrapperFocused]}>
+                        <LinearGradient
+                            colors={['#27272A', '#27272A']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 0, y: 1 }}
+                            style={styles.inputGradient}
+                        >
+                            <TextInput
+                                style={styles.input}
+                                placeholder={isInputFocused ? "" : "A blue lion logo reading 'HEXA' in bold letters"}
+                                placeholderTextColor="#71717A"
+                                value={prompt}
+                                onChangeText={setPrompt}
+                                multiline
+                                maxLength={500}
+                                onFocus={() => setIsInputFocused(true)}
+                                onBlur={() => setIsInputFocused(false)}
+                                returnKeyType="done"
+                                enablesReturnKeyAutomatically={true}
+                                onKeyPress={({ nativeEvent }) => {
+                                    if (nativeEvent.key === 'Enter') {
+                                        Keyboard.dismiss();
+                                    }
+                                }}
+                                onSubmitEditing={() => {
                                     Keyboard.dismiss();
-                                }
-                            }}
-                            onSubmitEditing={() => {
-                                Keyboard.dismiss();
-                                setIsInputFocused(false);
-                            }}
-                        />
-                        <Text style={styles.counter}>{prompt.length}/500</Text>
+                                    setIsInputFocused(false);
+                                }}
+                            />
+                            <Text style={styles.counter}>{prompt.length}/500</Text>
+                        </LinearGradient>
                     </BlurView>
                 </View>
 
@@ -184,6 +193,12 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
     },
+    headerTitle: {
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 12,
+    },
     title: {
         fontFamily: 'Manrope-ExtraBold',
         fontSize: 17,
@@ -192,11 +207,10 @@ const styles = StyleSheet.create({
         letterSpacing: -0.17,
         textAlign: 'center',
         color: 'white',
-        marginTop: 60,
-        marginBottom: 32,
     },
     promptSection: {
-        padding: 20
+        padding: 20,
+        marginBottom: 12
     },
     promptHeader: {
         flexDirection: 'row',
@@ -216,19 +230,21 @@ const styles = StyleSheet.create({
     },
     surpriseText: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 13,
     },
     inputWrapper: {
-        backgroundColor: '#27272A',
         borderRadius: 16,
         overflow: 'hidden',
         minHeight: 175,
-        padding: 16,
         borderWidth: 0,
     },
     inputWrapperFocused: {
         borderWidth: 1,
         borderColor: '#FAFAFA',
+    },
+    inputGradient: {
+        flex: 1,
+        padding: 16,
     },
     input: {
         color: 'white',
