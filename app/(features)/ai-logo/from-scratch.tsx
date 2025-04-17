@@ -122,22 +122,22 @@ export default function FromScratchScreen() {
                     <View style={styles.promptHeader}>
                         <Text style={styles.promptTitle}>Enter Your Prompt</Text>
                         <Pressable onPress={handleSurpriseMe} style={styles.surpriseButton}>
-                            <Text style={{ fontSize: 13 }}>🎲</Text>
+                            <Text style={{ fontSize: 10, marginRight: -6 }}>🎲</Text>
                             <Text style={styles.surpriseText}>Surprise me</Text>
                         </Pressable>
                     </View>
 
-                    <BlurView intensity={15} tint="dark" style={[styles.inputWrapper, isInputFocused && styles.inputWrapperFocused]}>
+                    <View style={[styles.inputWrapper, isInputFocused && styles.inputWrapperFocused]}>
                         <LinearGradient
-                            colors={['#27272A', '#27272A']}
+                            colors={['rgba(39, 39, 42, 0.7)', 'rgba(39, 39, 42, 0.7)']}
                             start={{ x: 0, y: 0 }}
-                            end={{ x: 0, y: 1 }}
+                            end={{ x: 1, y: 0 }}
                             style={styles.inputGradient}
                         >
                             <TextInput
                                 style={styles.input}
                                 placeholder={isInputFocused ? "" : "A blue lion logo reading 'HEXA' in bold letters"}
-                                placeholderTextColor="#71717A"
+                                placeholderTextColor="rgba(113, 113, 122, 0.8)"
                                 value={prompt}
                                 onChangeText={setPrompt}
                                 multiline
@@ -158,7 +158,7 @@ export default function FromScratchScreen() {
                             />
                             <Text style={styles.counter}>{prompt.length}/500</Text>
                         </LinearGradient>
-                    </BlurView>
+                    </View>
                 </View>
 
                 <Text style={styles.sectionTitle}>Logo Styles</Text>
@@ -239,6 +239,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         minHeight: 175,
         borderWidth: 0,
+        backgroundColor: 'rgba(39, 39, 42, 0.2)',
     },
     inputWrapperFocused: {
         borderWidth: 1,
@@ -247,14 +248,16 @@ const styles = StyleSheet.create({
     inputGradient: {
         flex: 1,
         padding: 16,
+        backgroundColor: 'transparent',
     },
     input: {
         color: 'white',
         fontSize: 16,
         flex: 1,
+        backgroundColor: 'transparent',
     },
     counter: {
-        color: '#71717A',
+        color: 'rgba(113, 113, 122, 0.8)',
         fontSize: 14,
         alignSelf: 'flex-start',
         marginTop: 8,
