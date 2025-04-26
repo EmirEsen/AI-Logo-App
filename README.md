@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/3b178a29-9d86-4ce7-a6e5-f6e91e1406f9
+
 # AI Logo Generator App
 
 This app generates logos based on user-entered prompts using OpenAI's DALL-E 2 model. The app allows users to create logos and view them within the app, and it stores the generated logos in Firestore for later access. The app's architecture integrates Firebase Functions and Firebase Firestore to handle image generation and storage.
