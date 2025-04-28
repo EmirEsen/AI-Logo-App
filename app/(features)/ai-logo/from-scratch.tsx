@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable, FlatList, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { Keyboard } from 'react-native';
 import { StatusIndicatorChip, ProgressState } from '@/components/ui/StatusIndicatorChip';

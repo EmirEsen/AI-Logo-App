@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, Dimensions, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
